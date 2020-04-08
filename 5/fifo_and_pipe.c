@@ -9,7 +9,7 @@ const char *NAME = "test";
 
 int compare(const void *a, const void *b)
 {
-    return(*(int *)b) - *((int *)a));
+    return(*(int *)b) - *((int *)a);
 }
 
 int *random_nums(int n)
@@ -38,7 +38,7 @@ int main(int argv, char *argc[])
     int *nums = random_nums(n);
     out_nums(nums, n);
 
-    mknod(FIFO_NAME, S_IFIFO | 0666, 0);
+    mknod(NAME, S_IFIFO | 0666, 0);
     int p[2];
     pipe(p);
 
@@ -63,6 +63,6 @@ int main(int argv, char *argc[])
         int *sorted_nums = malloc(sizeof(int) * n);
         read(fifo, sorted_nums, sizeof(int) * n);
         out_nums(sorted_nums, n);
-        unlink(FIFO_NAME);
+        unlink(NAME);
     }
 }
