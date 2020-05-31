@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 	  if(bytes_read <= 0) break;
 	
     	qsort((int *)buff, bytes_read * sizeof(char) / sizeof(int), sizeof(int), comparator);
-    	send(sock, (int *)buff, bytes_read * sizeof(char) / sizeof(int), 0);
+    	send(sock, (int *)buff, bytes_read, 0);
    }
    close(sock);
   }
